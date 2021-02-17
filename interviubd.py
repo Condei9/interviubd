@@ -15,7 +15,6 @@ f.close()
 
 ############ printing most used k names ############
 
-for i in range(k):
-   print(dictionaryWithNames[i])
+mun.printDict(dictionaryWithNames, k)
 
 ####################################

@@ -28,20 +28,27 @@ stop_words = set(stopwords.words('english'))
 def mostUsedNames(f):
     apparitions = defaultdict(int)
     f.seek(0)
-    nume = ""
-    punct = 0
+    name = ""
+    isPunctuation = 0
     for line in f:
         words = word_tokenize(line)
         for m in words:
-            if punct == 0:
+            if isPunctuation == 0:
                 if m[0].isupper() and m.lower() not in stop_words:
-                    nume += m + " "
-                elif nume != "":
-                    nume = nume[:-1]
-                    apparitions[nume] += 1
-                    nume = ""
+                    name += m + " "
+                elif name != "":
+                    name = name[:-1]
+                    apparitions[name] += 1
+                    name = ""
                 if m in punctuation:
-                    punct = 1
+                    isPunctuation = 1
             else:
-                punct = 0;
+                isPunctuation = 0;
     return sorted(apparitions.items(), key=itemgetter(1), reverse=True)
+
+####################  a simple print function   ####################
+
+def printDict(usedDictionary, k):
+    for i in range(k):
+        print(usedDictionary[i])
+        
